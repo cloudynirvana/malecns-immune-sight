@@ -4,15 +4,56 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MaleCNS / FlyWire Immune Sight</title>
+  <meta name="description" content="Research visualization: a downsampled mushroom-body circuit sees a toy tumor antigen pattern and hands that sight to an immune ODE. Not a medical device." />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>Where the tumor is <em>seen</em></h1>
-    <p>Downsampled mushroom-body circuit. Present antigen to lock a Kenyon-cell template. Sight opens the immune ODE. Not a medical device.</p>
+    <div>
+      <h1>Where the tumor is <em>seen</em></h1>
+      <p>Downsampled mushroom-body circuit in the spirit of FlyWire FAFB and MaleCNS v1.0. A toy neoantigen pattern is an odor. Sparse Kenyon cells either recognize it or they do not. Recognition opens the immune ODE. Not a treatment.</p>
+    </div>
+    <div class="badge">research visualization</div>
   </header>
-  <canvas id="stage" width="1100" height="640"></canvas>
-  <aside id="ui"></aside>
+  <main>
+    <section class="stage">
+      <canvas id="stage" width="1100" height="640" role="img" aria-label="Kenyon-cell lattice facing a tumor waveform"></canvas>
+      <div class="stats">
+        <span>atlas <b id="atlasName">MaleCNS MB*</b></span>
+        <span>KC <b id="kcStat">640</b></span>
+        <span>active <b id="actStat">0</b></span>
+        <span>sight <b id="sightStat">0.00</b></span>
+        <span>day <b id="dayStat">0</b></span>
+      </div>
+    </section>
+    <aside>
+      <div class="row">
+        <select id="atlas" aria-label="Atlas">
+          <option value="malecns">MaleCNS v1.0 MB-like 640 KC</option>
+          <option value="flywire">FlyWire FAFB v783 MB-like 512 KC</option>
+        </select>
+        <button id="run" class="primary" aria-pressed="true">pause</button>
+        <button id="reset">reset</button>
+      </div>
+      <div class="row">
+        <button id="cloak">cloak antigen</button>
+        <button id="uncloak" class="primary">present antigen</button>
+        <button id="mutate" class="warn">antigen escape</button>
+      </div>
+      <div class="meters">
+        <div><label>burden T <span id="tVal">1.00</span></label><div class="bar"><i id="tBar"></i></div></div>
+        <div><label>host H <span id="hVal">0.86</span></label><div class="bar"><i id="hBar"></i></div></div>
+        <div><label>resistant R <span id="rVal">0.08</span></label><div class="bar"><i id="rBar"></i></div></div>
+        <div><label>immune I <span id="iVal">0.05</span></label><div class="bar"><i id="iBar"></i></div></div>
+        <div><label>sight <span id="sVal">0.00</span></label><div class="bar"><i id="sBar"></i></div></div>
+        <div><label>cloaking <span id="cVal">0.70</span></label><div class="bar"><i id="cBar"></i></div></div>
+      </div>
+      <div class="log" id="log" aria-live="polite"></div>
+    </aside>
+  </main>
+  <footer>
+    <strong>What this is not.</strong> Not FlyWire or MaleCNS at full scale. Not a medical device. Fruit-fly Kenyon cells do not see human tumors.
+  </footer>
   <script src="app.js"></script>
 </body>
 </html>
